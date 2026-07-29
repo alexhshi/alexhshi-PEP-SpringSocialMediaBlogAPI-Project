@@ -6,6 +6,9 @@ import com.example.entity.Account;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
+
+import java.net.UnknownServiceException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 //import com.example.repository.*;
@@ -35,15 +38,13 @@ public class SocialMediaController {
       if (!acctService.usernameExists(input.getUsername())) {
         return acctService.addAccount(input);
       } else {
-        throw new Exception(); //409
+        throw new UnknownServiceException(); //409
       }
-    } else {
-      throw new RuntimeException(); //400
     }
-
+    throw new RuntimeException(); //400
   }
 
-  @ExceptionHandler(Exception.class)
+  @ExceptionHandler(UnknownServiceException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {
     return "";
