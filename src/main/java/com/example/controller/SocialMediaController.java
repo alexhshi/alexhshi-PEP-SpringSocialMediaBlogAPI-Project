@@ -37,8 +37,10 @@ public class SocialMediaController {
       } else {
         throw new Exception(); //409
       }
+    } else {
+      throw new RuntimeException(); //400
     }
-    throw new RuntimeException(); //400
+
   }
 
   @ExceptionHandler(Exception.class)
