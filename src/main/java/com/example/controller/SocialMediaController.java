@@ -99,6 +99,11 @@ public class SocialMediaController {
     }
   }
 
+  @DeleteMapping("/messages/{message_id}")
+  public int fooDel(@PathVariable int message_id) {
+    return 0; //TODO: self, finish this method
+  }
+
   @ExceptionHandler(ArithmeticException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {
