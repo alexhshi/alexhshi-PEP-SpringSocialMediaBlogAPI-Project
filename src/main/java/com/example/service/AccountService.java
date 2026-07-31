@@ -27,6 +27,6 @@ public class AccountService {
   }
 
   public boolean idExists(int id) {
-    return acctRepo.getById(id) != null;
+    return acctRepo.existsById(id);
   }
 }
