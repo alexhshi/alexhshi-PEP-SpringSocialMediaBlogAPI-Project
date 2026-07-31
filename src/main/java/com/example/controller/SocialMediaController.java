@@ -46,7 +46,7 @@ public class SocialMediaController {
       }
     }
     throw new ArrayStoreException(); //400
-    return null;
+    //return null;
   }
 
   @ExceptionHandler(ArithmeticException.class)
@@ -60,6 +60,5 @@ public class SocialMediaController {
   public String foobarError400() {
     return "";
   }
-    */
 
 }
