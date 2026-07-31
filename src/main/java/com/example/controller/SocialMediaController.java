@@ -49,6 +49,11 @@ public class SocialMediaController {
     //return null;
   }
 
+  @PostMapping("/login")
+  public Account foobarLogin(@RequestBody Account input) {
+    return acctService.usernameAndPassword(input.getUsername(), input.getPassword());
+  }
+
   @ExceptionHandler(ArithmeticException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {

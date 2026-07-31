@@ -20,4 +20,8 @@ public class AccountService {
   public Account addAccount(Account input) {
     return acctRepo.save(input);
   }
+
+  public Account usernameAndPassword(String username, String password) {
+    return acctRepo.findAccountByUsernameAndPassword(username, password);
+  }
 }
