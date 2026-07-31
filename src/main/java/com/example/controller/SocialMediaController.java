@@ -39,23 +39,23 @@ public class SocialMediaController {
       if (!acctService.usernameExists(input.getUsername())) {
         return ResponseEntity.status(HttpStatus.OK).body(acctService.addAccount(input));
       } else {
-        throw new RuntimeException(); //409
+        throw new ArithmeticException(); //409
         //return ResponseEntity.
       }
     }
-    //throw new RuntimeException(); //400
+    throw new ArrayStoreException(); //400
   }
 
-  @ExceptionHandler(RuntimeException.class)
+  @ExceptionHandler(ArithmeticException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {
     return "";
   }
 
-/*  @ExceptionHandler(RuntimeException.class)
+  @ExceptionHandler(ArrayStoreException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public String foobarError400() {
     return "";
   }
-*/
+
 }
