@@ -39,9 +39,10 @@ public class SocialMediaController {
         return acctService.addAccount(input);
       } else {
         throw new UnknownServiceException(); //409
+        //return ResponseEntity.
       }
     }
-    throw new RuntimeException(); //400
+    //throw new RuntimeException(); //400
   }
 
   @ExceptionHandler(UnknownServiceException.class)
@@ -50,10 +51,10 @@ public class SocialMediaController {
     return "";
   }
 
-  @ExceptionHandler(RuntimeException.class)
+  / *@ExceptionHandler(RuntimeException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public String foobarError400() {
     return "";
   }
-
+*/
 }
