@@ -1,4 +1,17 @@
 package com.example.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.entity.Message;
+import com.example.repository.MessageRepository;
+
 public class MessageService {
+  MessageRepository msgRepo;
+  @Autowired
+  public MessageService(MessageRepository msgRepo) {
+    this.msgRepo = msgRepo;
+  }
+  public Message addMsg(Message input) {
+    return msgRepo.save(input);
+  }
 }

@@ -3,6 +3,8 @@ package com.example.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entity.Account;
+import com.example.entity.Message;
+
 import org.springframework.web.bind.annotation.*;
 //import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
@@ -29,9 +31,11 @@ import java.util.List;
 public class SocialMediaController {
   //TODO: self, this the right way to integrate service?
   AccountService acctService;
+  MessageService msgService;
   @Autowired
-  public SocialMediaController(AccountService acctService) {
+  public SocialMediaController(AccountService acctService, MessageService msgService) {
     this.acctService = acctService;
+    this.msgService = msgService;
   }
 
 
@@ -68,6 +72,15 @@ public class SocialMediaController {
       throw new NoSuchElementException(); //401
     }
 
+  }
+
+  @PostMapping("/messages")
+  public Message foobarMsg(@RequestBody Message input) {
+    if (input.getMessageText().length() > 0 && input.getMessageText().length() <= 255 && acctService.idExists(input.getPostedBy())) {
+      return msgService.addMsg(input);
+    } else {
+      throw new ArrayStoreException(); //400
+    }
   }
 
   @ExceptionHandler(ArithmeticException.class)

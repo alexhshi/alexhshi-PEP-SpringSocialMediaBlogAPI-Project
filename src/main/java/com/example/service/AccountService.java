@@ -25,4 +25,8 @@ public class AccountService {
   public List<Account> usernameAndPassword(String username, String password) {
     return acctRepo.findAccountsByUsernameAndPassword(username, password);
   }
+
+  public boolean idExists(int id) {
+    return acctRepo.getById(id) != null;
+  }
 }
