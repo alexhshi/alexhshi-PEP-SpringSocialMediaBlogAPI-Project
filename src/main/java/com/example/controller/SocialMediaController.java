@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.service.*;
 import java.util.List;
 
+//TODO: self, can I integrate "natural" exceptions in my code?
+
 /**
  * TODO: You will need to write your own endpoints and handlers for your controller using Spring. The endpoints you will need can be
  * found in readme.md as well as the test cases. You be required to use the @GET/POST/PUT/DELETE/etc Mapping annotations
@@ -90,7 +92,11 @@ public class SocialMediaController {
 
   @GetMapping("/messages/{message_id}")
   public Message fooGetMsg(@PathVariable int message_id) {
-    return msgService.getMsgById(message_id);
+    if (msgService.getMsgById(message_id).isPresent()) {
+      return msgService.getMsgById(message_id).get();
+    } else {
+      return null;
+    }
   }
 
   @ExceptionHandler(ArithmeticException.class)
