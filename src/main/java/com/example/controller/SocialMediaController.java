@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 //import org.springframework.http.ResponseEntity;
 
+import java.util.NoSuchElementException;
+
 //import java.net.UnknownServiceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +53,12 @@ public class SocialMediaController {
 
   @PostMapping("/login")
   public Account foobarLogin(@RequestBody Account input) {
-    return acctService.usernameAndPassword(input.getUsername(), input.getPassword());
+    try{
+      return acctService.usernameAndPassword(input.getUsername(), input.getPassword());
+    } catch (Exception e) {
+      throw new NoSuchElementException(); //401
+    }
+
   }
 
   @ExceptionHandler(ArithmeticException.class)
@@ -63,6 +70,12 @@ public class SocialMediaController {
   @ExceptionHandler(ArrayStoreException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public String foobarError400() {
+    return "";
+  }
+
+  @ExceptionHandler(NoSuchElementException.class)
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  public String foobarError401() {
     return "";
   }
 
