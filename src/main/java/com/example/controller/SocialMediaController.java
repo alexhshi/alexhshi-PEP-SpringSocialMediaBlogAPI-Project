@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.SpringApplication;
 //import com.example.repository.*;
 import com.example.service.*;
+import java.util.List;
 
 /**
  * TODO: You will need to write your own endpoints and handlers for your controller using Spring. The endpoints you will need can be
@@ -53,9 +54,17 @@ public class SocialMediaController {
 
   @PostMapping("/login")
   public Account foobarLogin(@RequestBody Account input) {
-    try{
-      return acctService.usernameAndPassword(input.getUsername(), input.getPassword());
-    } catch (Exception e) {
+    List<Account> answer = acctService.usernameAndPassword(input.getUsername(), input.getPassword());
+    /*
+      try{
+        return acctService.usernameAndPassword(input.getUsername(), input.getPassword());
+      } catch (Exception e) {
+      throw new NoSuchElementException(); //401
+    }
+      */
+    if (answer.size() > 0) {
+      return answer.get(0);
+    } else {
       throw new NoSuchElementException(); //401
     }
 

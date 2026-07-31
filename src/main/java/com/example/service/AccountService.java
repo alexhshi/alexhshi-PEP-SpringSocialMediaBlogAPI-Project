@@ -4,6 +4,7 @@ import com.example.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.entity.*;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -21,7 +22,7 @@ public class AccountService {
     return acctRepo.save(input);
   }
 
-  public Account usernameAndPassword(String username, String password) {
-    return acctRepo.findAccountByUsernameAndPassword(username, password);
+  public List<Account> usernameAndPassword(String username, String password) {
+    return acctRepo.findAccountsByUsernameAndPassword(username, password);
   }
 }
