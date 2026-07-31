@@ -21,6 +21,6 @@ public class MessageService {
     return msgRepo.findAll();
   }
   public Message getMsgById(int id) {
-    return msgRepo.getById(id);
+    return msgRepo.findById(id).get();
   }
 }
