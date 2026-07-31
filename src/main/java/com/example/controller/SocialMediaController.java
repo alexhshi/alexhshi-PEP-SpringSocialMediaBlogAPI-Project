@@ -21,6 +21,7 @@ import com.example.service.*;
  * where applicable as well as the @ResponseBody and @PathVariable annotations. You should
  * refer to prior mini-project labs and lecture materials for guidance on how a controller may be built.
  */
+/*
 @RestController
 public class SocialMediaController {
   //TODO: self, this the right way to integrate service?
@@ -62,3 +63,4 @@ public class SocialMediaController {
     */
 
 }
+*/
