@@ -20,4 +20,7 @@ public class MessageService {
   public List<Message> getAllMsgs() {
     return msgRepo.findAll();
   }
+  public Message getMsgById(int id) {
+    return msgRepo.getById(id);
+  }
 }

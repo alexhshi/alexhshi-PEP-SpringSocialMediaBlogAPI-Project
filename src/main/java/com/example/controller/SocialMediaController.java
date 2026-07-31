@@ -88,6 +88,11 @@ public class SocialMediaController {
     return msgService.getAllMsgs();
   }
 
+  @GetMapping("/messages/{message_id}")
+  public Message fooGetMsg(@PathVariable int message_id) {
+    return msgService.getMsgById(message_id);
+  }
+
   @ExceptionHandler(ArithmeticException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {
