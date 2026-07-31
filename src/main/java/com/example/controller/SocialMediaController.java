@@ -40,11 +40,12 @@ public class SocialMediaController {
         //return ResponseEntity.status(HttpStatus.OK).body(acctService.addAccount(input));
         return acctService.addAccount(input);
       } else {
-        throw new ArithmeticException(); //409
+        //throw new ArithmeticException(); //409
         //return ResponseEntity.
       }
     }
-    throw new ArrayStoreException(); //400
+    //throw new ArrayStoreException(); //400
+    return null;
   }
 
   @ExceptionHandler(ArithmeticException.class)
