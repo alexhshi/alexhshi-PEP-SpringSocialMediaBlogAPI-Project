@@ -83,6 +83,11 @@ public class SocialMediaController {
     }
   }
 
+  @GetMapping("/messages")
+  public List<Message> fooGetMsgs() {
+    return msgService.getAllMsgs();
+  }
+
   @ExceptionHandler(ArithmeticException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {

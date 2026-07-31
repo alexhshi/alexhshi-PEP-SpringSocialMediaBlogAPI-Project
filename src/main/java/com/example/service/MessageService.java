@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.entity.Message;
 import com.example.repository.MessageRepository;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class MessageService {
@@ -15,5 +16,8 @@ public class MessageService {
   }
   public Message addMsg(Message input) {
     return msgRepo.save(input);
+  }
+  public List<Message> getAllMsgs() {
+    return msgRepo.findAll();
   }
 }
