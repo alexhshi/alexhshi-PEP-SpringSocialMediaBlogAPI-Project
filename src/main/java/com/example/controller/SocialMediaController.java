@@ -34,10 +34,11 @@ public class SocialMediaController {
   //AccountRepository acctRepo = appContext.getBean(AccountRepository.class);
 
   @PostMapping("/register")
-  public ResponseEntity<Account> foobarRegister(@RequestBody Account input) {
+  public Account foobarRegister(@RequestBody Account input) {
     if (input.getUsername().length() > 0 && input.getPassword().length() >= 4) {
       if (!acctService.usernameExists(input.getUsername())) {
-        return ResponseEntity.status(HttpStatus.OK).body(acctService.addAccount(input));
+        //return ResponseEntity.status(HttpStatus.OK).body(acctService.addAccount(input));
+        return acctService.addAccount(input);
       } else {
         throw new ArithmeticException(); //409
         //return ResponseEntity.
