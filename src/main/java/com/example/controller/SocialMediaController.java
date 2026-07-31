@@ -32,7 +32,7 @@ public class SocialMediaController {
 
 
   //AccountRepository acctRepo = appContext.getBean(AccountRepository.class);
-
+  /*
   @PostMapping("/register")
   public Account foobarRegister(@RequestBody Account input) {
     if (input.getUsername().length() > 0 && input.getPassword().length() >= 4) {
@@ -59,5 +59,6 @@ public class SocialMediaController {
   public String foobarError400() {
     return "";
   }
+    */
 
 }
