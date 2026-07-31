@@ -21,7 +21,7 @@ import com.example.service.*;
  * where applicable as well as the @ResponseBody and @PathVariable annotations. You should
  * refer to prior mini-project labs and lecture materials for guidance on how a controller may be built.
  */
-/*
+
 @RestController
 public class SocialMediaController {
   //TODO: self, this the right way to integrate service?
@@ -33,7 +33,7 @@ public class SocialMediaController {
 
 
   //AccountRepository acctRepo = appContext.getBean(AccountRepository.class);
-  /*
+
   @PostMapping("/register")
   public Account foobarRegister(@RequestBody Account input) {
     if (input.getUsername().length() > 0 && input.getPassword().length() >= 4) {
@@ -41,11 +41,11 @@ public class SocialMediaController {
         //return ResponseEntity.status(HttpStatus.OK).body(acctService.addAccount(input));
         return acctService.addAccount(input);
       } else {
-        //throw new ArithmeticException(); //409
+        throw new ArithmeticException(); //409
         //return ResponseEntity.
       }
     }
-    //throw new ArrayStoreException(); //400
+    throw new ArrayStoreException(); //400
     return null;
   }
 
@@ -63,4 +63,3 @@ public class SocialMediaController {
     */
 
 }
-*/
