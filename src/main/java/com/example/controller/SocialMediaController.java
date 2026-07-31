@@ -6,6 +6,7 @@ import com.example.entity.Account;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.net.UnknownServiceException;
 
@@ -33,25 +34,25 @@ public class SocialMediaController {
   //AccountRepository acctRepo = appContext.getBean(AccountRepository.class);
 
   @PostMapping("/register")
-  public Account foobarRegister(@RequestBody Account input) {
+  public ResponseEntity<Account> foobarRegister(@RequestBody Account input) {
     if (input.getUsername().length() > 0 && input.getPassword().length() >= 4) {
       if (!acctService.usernameExists(input.getUsername())) {
-        return acctService.addAccount(input);
+        return ResponseEntity.status(HttpStatus.OK).body(acctService.addAccount(input));
       } else {
-        throw new UnknownServiceException(); //409
+        throw new RuntimeException(); //409
         //return ResponseEntity.
       }
     }
     //throw new RuntimeException(); //400
   }
 
-  @ExceptionHandler(UnknownServiceException.class)
+  @ExceptionHandler(RuntimeException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {
     return "";
   }
 
-  / *@ExceptionHandler(RuntimeException.class)
+/*  @ExceptionHandler(RuntimeException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public String foobarError400() {
     return "";
