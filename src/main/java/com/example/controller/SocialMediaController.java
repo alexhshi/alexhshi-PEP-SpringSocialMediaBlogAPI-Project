@@ -113,7 +113,7 @@ public class SocialMediaController {
 
   //TODO: self, for the life of me I can't figure out why I'm failing that one test
   @PatchMapping("messages/{message_id}")
-  public int fooUpdate(@PathVariable int message_id, @RequestBody String message_text) {
+  public int fooUpdate(@PathVariable int message_id, @RequestBody String messageText) {
     /*
     if ((msgService.getMsgById(message_id).isPresent()) && (message_text.length() == 0) && (message_text.length() <= 255)) {
       msgService.updateById(message_id, message_text);
@@ -121,8 +121,8 @@ public class SocialMediaController {
     } 
       */
     //if (msgService.getMsgById(message_id).isPresent() && (!message_text.isBlank())) {
-    if (msgService.idExists(message_id) && (message_text.length() <= 255)) {
-      msgService.updateById(message_id, message_text);
+    if (msgService.idExists(message_id) && (messageText.length() <= 255)) {
+      msgService.updateById(message_id, messageText);
       return 1;
     } else {
       throw new ArrayStoreException(); //400
