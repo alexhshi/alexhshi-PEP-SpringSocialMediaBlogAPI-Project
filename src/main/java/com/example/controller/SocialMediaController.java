@@ -125,7 +125,7 @@ public class SocialMediaController {
     //if (msgService.idExists(message_id) && (messageText.length() <= 255) && (messageText.length() > 0)) {
     //System.out.println(messageText);
     //System.out.println(msgService.getMsgById(message_id).get());
-    if (msgService.idExists(message_id) && inputMsg.getMessageText().isEmpty() && inputMsg.getMessageText().length() <= 255) {
+    if (msgService.idExists(message_id) && (inputMsg.getMessageText().length() > 0) && (inputMsg.getMessageText().length() <= 255)) {
       msgService.updateById(message_id, inputMsg.getMessageText());
       return 1;
     } else {
