@@ -113,7 +113,8 @@ public class SocialMediaController {
 
   //TODO: self, for the life of me I can't figure out why I'm failing that one test
   @PatchMapping("messages/{message_id}")
-  public int fooUpdate(@PathVariable int message_id, @RequestBody String messageText) {
+  //public int fooUpdate(@PathVariable int message_id, @RequestBody String messageText) {
+  public int fooUpdate(@PathVariable int message_id, @RequestBody Message inputMsg) {
     /*
     if ((msgService.getMsgById(message_id).isPresent()) && (message_text.length() == 0) && (message_text.length() <= 255)) {
       msgService.updateById(message_id, message_text);
@@ -122,10 +123,11 @@ public class SocialMediaController {
       */
     //if (msgService.getMsgById(message_id).isPresent() && (!message_text.isBlank())) {
     //if (msgService.idExists(message_id) && (messageText.length() <= 255) && (messageText.length() > 0)) {
-    System.out.println(messageText);
-    System.out.println(msgService.getMsgById(message_id).get());
-    if (messageText.isEmpty()) {
-      msgService.updateById(message_id, messageText);
+    //System.out.println(messageText);
+    //System.out.println(msgService.getMsgById(message_id).get());
+    //if (messageText.isEmpty()) {
+    if (inputMsg.getMessageText().length() > 0) {
+      msgService.updateById(message_id, inputMsg.getMessageText());
       return 1;
     } else {
       throw new ArrayStoreException(); //400
