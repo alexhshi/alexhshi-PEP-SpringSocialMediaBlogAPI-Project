@@ -111,6 +111,16 @@ public class SocialMediaController {
     }
   }
 
+  @PatchMapping("messages/{message_id}")
+  public int fooUpdate(@PathVariable int message_id, @RequestBody String message_text) {
+    if (msgService.getMsgById(message_id).isPresent() && message_text.length() > 0 && message_text.length() <= 255) {
+      msgService.updateById(message_id, message_text);
+      return 1; //TODO: number of rows updated not implemented "right"
+    } else {
+      throw new ArrayStoreException();
+    }
+  }
+
   @ExceptionHandler(ArithmeticException.class)
   @ResponseStatus(HttpStatus.CONFLICT)
   public String foobarError409() {

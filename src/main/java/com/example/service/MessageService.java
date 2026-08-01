@@ -27,4 +27,9 @@ public class MessageService {
   public void deleteById(int id) {
     msgRepo.deleteById(id);
   }
+  public void updateById(int id, String msg) {
+    if (msgRepo.findById(id).isPresent()) {
+      msgRepo.getById(id).setMessageText(msg);
+    }
+  }
 }
