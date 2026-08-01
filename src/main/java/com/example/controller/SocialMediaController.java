@@ -122,11 +122,11 @@ public class SocialMediaController {
       throw new ArrayStoreException(); //400
     }
       */
-    if (msgService.idExists(message_id)) {
+    if (msgService.getMsgById(message_id).isPresent()) {
       msgService.updateById(message_id, message_text);
       return 1;
     }
-
+    return -9;
   }
 
   @GetMapping("accounts/{account_id}/messages")
