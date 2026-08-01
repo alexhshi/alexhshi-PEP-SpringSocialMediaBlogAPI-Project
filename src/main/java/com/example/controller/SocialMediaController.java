@@ -122,7 +122,7 @@ public class SocialMediaController {
       throw new ArrayStoreException(); //400
     }
       */
-    if (msgService.getMsgById(message_id).isPresent()) {
+    if (msgService.idExists(message_id)) {
       msgService.updateById(message_id, message_text);
       return 1;
     }

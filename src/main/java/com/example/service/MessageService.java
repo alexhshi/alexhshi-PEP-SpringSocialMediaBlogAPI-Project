@@ -35,4 +35,7 @@ public class MessageService {
   public List<Message> msgByAcc(int accId) {
     return msgRepo.findMessagesByPostedBy(accId);
   }
+  public boolean idExists(int id) {
+    return msgRepo.existsById(id);
+  }
 }
