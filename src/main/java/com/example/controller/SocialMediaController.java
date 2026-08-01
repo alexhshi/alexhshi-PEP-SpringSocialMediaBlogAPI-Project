@@ -111,6 +111,7 @@ public class SocialMediaController {
     }
   }
 
+  //TODO: self, for the life of me I can't figure out why I'm failing that one test
   @PatchMapping("messages/{message_id}")
   public int fooUpdate(@PathVariable int message_id, @RequestBody String message_text) {
     if (msgService.getMsgById(message_id).isPresent() && (!message_text.isBlank()) && message_text.length() <= 255) {
@@ -119,6 +120,11 @@ public class SocialMediaController {
     } else {
       throw new ArrayStoreException(); //400
     }
+  }
+
+  @GetMapping("accounts/{account_id}/messages")
+  public List<Message> fooUser(@PathVariable int account_id) {
+    return msgService.msgByAcc(account_id);
   }
 
   @ExceptionHandler(ArithmeticException.class)

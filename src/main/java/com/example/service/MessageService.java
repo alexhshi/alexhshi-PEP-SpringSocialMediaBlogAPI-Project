@@ -32,4 +32,7 @@ public class MessageService {
       msgRepo.getById(id).setMessageText(msg);
     }
   }
+  public List<Message> msgByAcc(int accId) {
+    return msgRepo.findMessagesByPostedBy(accId);
+  }
 }
