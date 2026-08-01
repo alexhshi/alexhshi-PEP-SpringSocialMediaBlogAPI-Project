@@ -120,8 +120,8 @@ public class SocialMediaController {
       return 1; //TODO: number of rows updated not implemented "right"
     } 
       */
-    if (msgService.getMsgById(message_id).isPresent() && (!message_text.isBlank())) {
-    //if (msgService.idExists(message_id)) {
+    //if (msgService.getMsgById(message_id).isPresent() && (!message_text.isBlank())) {
+    if (msgService.idExists(message_id) && (message_text.length() > 0)) {
       msgService.updateById(message_id, message_text);
       return 1;
     } else {
