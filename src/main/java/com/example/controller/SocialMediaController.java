@@ -99,6 +99,7 @@ public class SocialMediaController {
     }
   }
 
+  //TODO: self, this didn't need responseentity it seems
   @DeleteMapping("/messages/{message_id}")
   public ResponseEntity<Integer> fooDel(@PathVariable int message_id) {
     //ResponseEntity<Integer> result = ResponseEntity.status(200);
