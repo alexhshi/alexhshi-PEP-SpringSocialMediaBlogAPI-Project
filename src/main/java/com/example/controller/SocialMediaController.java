@@ -118,16 +118,15 @@ public class SocialMediaController {
     if ((msgService.getMsgById(message_id).isPresent()) && (message_text.length() == 0) && (message_text.length() <= 255)) {
       msgService.updateById(message_id, message_text);
       return 1; //TODO: number of rows updated not implemented "right"
-    } else {
-      throw new ArrayStoreException(); //400
-    }
+    } 
       */
     //if (msgService.getMsgById(message_id).isPresent()) {
     if (msgService.idExists(message_id)) {
       msgService.updateById(message_id, message_text);
       return 1;
+    } else {
+      throw new ArrayStoreException(); //400
     }
-    return -9;
   }
 
   @GetMapping("accounts/{account_id}/messages")
