@@ -121,7 +121,7 @@ public class SocialMediaController {
     } 
       */
     //if (msgService.getMsgById(message_id).isPresent() && (!message_text.isBlank())) {
-    if (msgService.idExists(message_id) && (message_text.length() > 0)) {
+    if (msgService.idExists(message_id) && (message_text.length() <= 255)) {
       msgService.updateById(message_id, message_text);
       return 1;
     } else {
