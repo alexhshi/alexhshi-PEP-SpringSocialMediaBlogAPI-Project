@@ -114,7 +114,7 @@ public class SocialMediaController {
   //TODO: self, for the life of me I can't figure out why I'm failing that one test
   @PatchMapping("messages/{message_id}")
   public int fooUpdate(@PathVariable int message_id, @RequestBody String message_text) {
-    if (msgService.getMsgById(message_id).isPresent() && (message_text.isBlank()) && message_text.length() <= 255) {
+    if (msgService.getMsgById(message_id).isPresent() && (!message_text.isBlank()) && (message_text.length() <= 255)) {
       msgService.updateById(message_id, message_text);
       return 1; //TODO: number of rows updated not implemented "right"
     } else {
