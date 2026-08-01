@@ -24,4 +24,7 @@ public class MessageService {
   public Optional<Message> getMsgById(int id) {
     return msgRepo.findById(id);
   }
+  public void deleteById(int id) {
+    msgRepo.deleteById(id);
+  }
 }

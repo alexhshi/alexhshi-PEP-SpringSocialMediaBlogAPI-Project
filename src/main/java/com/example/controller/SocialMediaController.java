@@ -8,7 +8,7 @@ import com.example.entity.Message;
 import org.springframework.web.bind.annotation.*;
 //import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity;
 
 import java.util.NoSuchElementException;
 
@@ -100,8 +100,14 @@ public class SocialMediaController {
   }
 
   @DeleteMapping("/messages/{message_id}")
-  public int fooDel(@PathVariable int message_id) {
-    return 0; //TODO: self, finish this method
+  public ResponseEntity<Integer> fooDel(@PathVariable int message_id) {
+    //ResponseEntity<Integer> result = ResponseEntity.status(200);
+    if (msgService.getMsgById(message_id).isPresent()) {
+      msgService.deleteById(message_id);
+      return ResponseEntity.ok(1);
+    } else {
+      throw new ClassCastException(); //200
+    }
   }
 
   @ExceptionHandler(ArithmeticException.class)
@@ -121,5 +127,10 @@ public class SocialMediaController {
   public String foobarError401() {
     return "";
   }
-
+  
+  @ExceptionHandler(ClassCastException.class)
+  @ResponseStatus(HttpStatus.OK)
+  public void foobarNoError() {
+    return;
+  }
 }
